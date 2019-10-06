@@ -3,7 +3,7 @@
 
 ## Write a short comment describing this function
 
-makeCacheMatrix <- function(x = matrix()) {
+makeCacheMatrix <- function(x = matrix()) { ## function get a matrix
   i <- NULL
   set <- function(y) {
     x <<- y
@@ -19,17 +19,20 @@ makeCacheMatrix <- function(x = matrix()) {
 }
 
 
-## Write a short comment describing this function
-
-cacheSolve <- function(x, ...) {
-  ## Return a matrix that is the inverse of 'x'
+cacheSolve <- function(x, ...) { ## function get a matrix
   i <- x$getinverse()
   if (!is.null(i)) {
     message("getting cached data")
-    return(i)
+    return(i) ## Return a matrix that is the inverse of 'x'
   }
   data <- x$get()
   i <- solve(data, ...)
   x$setinverse(i)
   i
 }
+
+## Test
+
+A <- matrix(c(2,4,6,8),2,2)
+B <- makeCacheMatrix(A)
+cacheSolve(B) 
